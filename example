@@ -1,0 +1,9 @@
+Computer A: 10 billion instructions
+            4 GHz processor
+            1.0 CPI
+
+Computer B: 8 Billion instructions
+            4 GHz Processor
+            1.1 CPI
+
+MIPS COmp A: 4 GHz / 1.0 * 1000000

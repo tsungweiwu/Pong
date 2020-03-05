@@ -9,16 +9,26 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81c06dec-0a2f-44fb-9e91-9b6e8605294f" name="Default Changelist" comment="" />
+    <list default="true" id="81c06dec-0a2f-44fb-9e91-9b6e8605294f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gba.h" beforeDir="false" afterPath="$PROJECT_DIR$/gba.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.elf" beforeDir="false" afterPath="$PROJECT_DIR$/main.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.gba" beforeDir="false" afterPath="$PROJECT_DIR$/main.gba" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ClangdSettings">
-    <option name="formatViaClangd" value="false" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Yd9kuWrsZMA4qi2ExX6pjqPyXb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -26,8 +36,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="cf.advertisement.text.overridden" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
@@ -41,7 +53,10 @@
       <option name="presentableId" value="Default" />
       <updated>1583261750639</updated>
       <workItem from="1583261751984" duration="1449000" />
-      <workItem from="1583343488537" duration="126000" />
+      <workItem from="1583343488537" duration="3813000" />
+      <workItem from="1583432367582" duration="1981000" />
+      <workItem from="1583436485003" duration="1255000" />
+      <workItem from="1583450008047" duration="1240000" />
     </task>
     <servers />
   </component>
@@ -49,9 +64,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="519" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1583343489351">
+    <state x="440" y="202" key="#Other_File_Types" timestamp="1583434178650">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="519" y="369" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583343489351" />
+    <state x="440" y="202" key="#Other_File_Types/0.23.1680.1027@0.23.1680.1027" timestamp="1583434178650" />
+    <state x="571" y="346" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583434118177">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="571" y="346" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1583434118177" />
+    <state x="349" y="175" key="SettingsEditor" timestamp="1583434303074">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="349" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1583434303074" />
+    <state x="519" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1583450012727">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="519" y="369" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583450012727" />
   </component>
 </project>

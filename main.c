@@ -39,20 +39,34 @@ void drawRect(struct Rect rect, uint16 color)
 // number sequence for count down
 void init7seg()
 {
-    a.w = 16;
-    a.h = 4;
-    f.w = 4;
-    f.h = 16;
-    
+    // a, b, c, d, e, f, g
+    a.w = i.w = 16;
+    a.h = i.h = 4;
+    f.w = n.w = 4;
+    f.h = n.h = 16;
+
+    // i, j, k, l, m, n, o
     b = c = e = f;
     d = g = a;
-    
-    a.x = d.x = e.x = f.x = g.x = SCREEN_WIDTH/4;
+
+    j = k = m = n;
+    l = o = i;
+
+    // location of the 7 segment display
+    a.x = d.x = e.x = f.x = g.x = SCREEN_WIDTH/5.5;
     b.x = c.x = a.x + a.w;
-    
-    a.y = b.y = f.y = 0;
+
+    i.x = l.x = m.x = n.x = o.x = SCREEN_WIDTH/4 * 3;
+    j.x = k.x = i.x + i.w;
+
+    // height of the display
+    a.y = b.y = f.y = i.y = j.y = n.y = 0;
+
     c.y = e.y = g.y = b.y + b.h - a.h;
     d.y = g.y + b.h - a.h;
+
+    k.y = m.y = o.y = j.y + j.h - i.h;
+    l.y = o.y + j.h - i.h;
 }
 
 // erases or just sets all to white
@@ -65,18 +79,34 @@ void clear7seg()
     drawRect(e, makeColor(0,0,0));
     drawRect(f, makeColor(0,0,0));
     drawRect(g, makeColor(0,0,0));
+
+    drawRect(i, makeColor(0,0,0));
+    drawRect(j, makeColor(0,0,0));
+    drawRect(k, makeColor(0,0,0));
+    drawRect(l, makeColor(0,0,0));
+    drawRect(m, makeColor(0,0,0));
+    drawRect(n, makeColor(0,0,0));
+    drawRect(o, makeColor(0,0,0));
 }
 
 // draws the number count down
-void draw7seg(uint8 num)
+void draw7seg(uint8 num, uint8 num2)
 {
     clear7seg();
+    // first digit
     bool w,x,y,z;
-        
+	// second digit
+    bool w2,x2,y2,z2;
+
     w = (num >= 8 ? ((num-=8) ? 1 : 1) : 0);
     x = (num >= 4 ? ((num-=4) ? 1 : 1) : 0);
     y = (num >= 2 ? ((num-=2) ? 1 : 1) : 0);
     z = (num >= 1 ? ((num-=1) ? 1 : 1) : 0);
+
+    w2 = (num2 >= 8 ? ((num2-=8) ? 1 : 1) : 0);
+    x2 = (num2 >= 4 ? ((num2-=4) ? 1 : 1) : 0);
+    y2 = (num2 >= 2 ? ((num2-=2) ? 1 : 1) : 0);
+    z2 = (num2 >= 1 ? ((num2-=1) ? 1 : 1) : 0);
     
     //this is where the crazy if statements go
     if(w || y || (!x && !z) || (x && z))
@@ -93,61 +123,116 @@ void draw7seg(uint8 num)
         drawRect(f, makeColor(0x1f, 0x1f, 0x1f));
     if(w || (!y && x) || (y && !z) || (y && !x))
         drawRect(g, makeColor(0x1f, 0x1f, 0x1f));
+
+    //this is where the crazy if statements go
+    if(w2 || y2 || (!x2 && !z2) || (x2 && z2))
+        drawRect(i, makeColor(0x1f, 0x1f, 0x1f));
+    if((y2 && z2) || (!y2 && !z2) || !x2)
+        drawRect(j, makeColor(0x1f, 0x1f, 0x1f));
+    if(x2 || !y2 || z2)
+        drawRect(k, makeColor(0x1f, 0x1f, 0x1f));
+    if(w2 || (y2 && !z2) || (!x2 && !z2) || (!x2 && y2) || (x2 && !y2 && z2))
+        drawRect(l, makeColor(0x1f, 0x1f, 0x1f));
+    if((y2 && !z2) || (!x2 && !z2))
+        drawRect(m, makeColor(0x1f, 0x1f, 0x1f));
+    if(w2 || (x2 && !y2) || (x2 && !z2) ||(!y2 && !z2))
+        drawRect(n, makeColor(0x1f, 0x1f, 0x1f));
+    if(w2 || (!y2 && x2) || (y2 && !z2) || (y2 && !x2))
+        drawRect(o, makeColor(0x1f, 0x1f, 0x1f));
+}
+
+void initGame()
+{
+	// setting up the position and size of player 1
+	player.h = 32;
+	player.w = 8;
+	player.x = 0;
+	player.y = 0;
+
+	// setting up the position and size of player 2
+	player2.h = 32;
+	player2.w = 8;
+	player2.x = SCREEN_WIDTH - player2.w;
+	player2.y = SCREEN_HEIGHT - player2.h;
+
+	// setting up the position and size of the ball
+	ball.h = 8;
+	ball.w = 8;
+	prevBall = ball;
 }
 
 int main()
 {
     REG_DISPLAY = VIDEOMODE | BGMODE;
-    //init a for testing
+    //initialize the display
     init7seg();
-    uint8 val = 0;
-    uint8 counter = 0;
-    
-    //setting up temp variables for Ball
-    uint32 ballLeft = 120;
-    uint32 ballTop = 80;
-    uint32 speedX = 1;
-    uint32 speedY = 1;
 
-    // setting up values for player
-    uint32 top = 0;
-    uint32 left = 0;
-    
-    //player is 32 pixel height, 8 pixels wide
-    player.h = 32;
-    player.w = 8;
-    player.x = 0;
-    player.y = 0;
-    uint16 p_color = makeColor(0, 0x1f, 0);
-    
-    ball.h = 8;
-    ball.w = 8;
-    ball.x = ballLeft;
-    ball.y = ballTop;
-    prevBall = ball;
-    uint16 b_color = makeColor(0, 0, 0x1f);
+	// initialize the points
+	uint8 val = 0;
+	uint8 val2 = 0;
+
+	//setting up temp variables for Ball
+	uint32 ballLeft = SCREEN_WIDTH/2;
+	uint32 ballTop = SCREEN_HEIGHT/2;
+	uint32 speedX = 1;
+	uint32 speedY = 1;
+
+	// setting up values for player
+	uint32 top = 0;
+	uint32 left = 0;
+
+	// setting up values for player2
+	uint32 top2 = 0;
+	uint32 left2 = 0;
+
+	// color of the players
+	uint16 p_color = makeColor(0, 0x1f, 0);
+	// color of the ball
+	uint16 b_color = makeColor(0, 0, 0x1f);
+
+    // setting up ball and players
+    initGame();
+
+	ball.x = ballLeft;
+	ball.y = ballTop;
     
     while(1)
     {
         sync();
+
+        if(val == 5| val2 == 5)
+		{
+			break;
+		}
         
         //erase prev ball position
         drawRect(prevBall, makeColor(0,0,0));
         //erase prev player position
         drawRect(prevPlayer, makeColor(0,0,0));
+        //erase prev player2 position
+        drawRect(prevPlayer2, makeColor(0,0,0));
 
         // goes bottom right in the beginning (direction of ball)
         ballTop += speedY;
         ballLeft += speedX;
 
         // ask for input to move paddle
-        if(!(REG_KEY_INPUT & DOWN)) // when it is zero then run (or when you call down)
+        if(!(REG_KEY_INPUT & A)) // when it is zero then run (or when you call down)
 			top++;
 
-		if(!(REG_KEY_INPUT & UP) && top != 0) // when it is zero then run (or when you call up)
+		if(!(REG_KEY_INPUT & B) && top != 0) // when it is zero then run (or when you call up)
 			top--;
 
 		top = clamp(top, 0, SCREEN_HEIGHT - player.h); // sets a border for the paddle not to go off borders
+
+        // ask for input to move paddle
+        if(!(REG_KEY_INPUT & DOWN)) // when it is zero then run (or when you call down)
+            top2++;
+
+        if(!(REG_KEY_INPUT & UP) && top2 != 0) // when it is zero then run (or when you call up)
+            top2--;
+
+        top2 = clamp(top2, 0, SCREEN_HEIGHT - player2.h); // sets a border for the paddle not to go off borders
         
         //do more stuff
         // if balltop is less than 0 then it starts at top, if greater than
@@ -157,11 +242,27 @@ int main()
         ballTop = clamp(ballTop, 0, SCREEN_HEIGHT - ball.h);
         ballLeft = clamp(ballLeft, 0, SCREEN_WIDTH - ball.w);
 
-        // once the ball hits the wall it goes in the opposite direction
+        // once the ball hits the top and bottom wall it goes in the opposite direction
         if(ballTop == 0 || ballTop == SCREEN_HEIGHT - ball.h)
             speedY = -speedY;
-        if(ballLeft == 0 || ballLeft == SCREEN_WIDTH - ball.w)
-            speedX = -speedX;
+
+        // ball touches right wall (left player gets a point)
+		if(ballLeft == SCREEN_WIDTH - ball.w)
+		{
+			val++;
+			// resetting the ball
+			ballLeft = SCREEN_WIDTH/2;
+			speedX = -speedX;
+		}
+
+		// ball touches left wall (right player gets a point)
+        if(ballLeft == 0)
+        {
+            val2++;
+			// resetting the ball
+			ballLeft = SCREEN_WIDTH/2;
+			speedX = -speedX;
+        }
 
         // starts going in the opposite direction
         ball.x = ballLeft;
@@ -179,12 +280,26 @@ int main()
         	}
         }
 
+        // check to see if ball is lined up with paddle
+        if((ball.x + ball.w) == (SCREEN_WIDTH - player2.w))
+        {
+            // bottom of ball is higher than top of paddle
+            if(ball.y < player2.y + player2.h && ball.y + ball.h > player2.y) // above bottom of paddle
+            {
+                speedX = -speedX;
+            }
+        }
+
         player.y = top;
         prevPlayer = player;
+
+        player2.y = top2;
+        prevPlayer2 = player2;
         
         //draw area
-        draw7seg(val);
+        draw7seg(val, val2);
         drawRect(player, p_color);
+        drawRect(player2, p_color);
         drawRect(ball, b_color);
     }
 }

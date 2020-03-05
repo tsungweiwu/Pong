@@ -33,8 +33,8 @@ typedef unsigned int    uint32;
 struct Rect {
     uint32 x, y;
     uint32 w, h;
-} a,b,c,d,e,f,g,
-  player, ball, prevBall, prevPlayer;
+} a,b,c,d,e,f,g,i,j,k,l,m,n,o,
+  player, player2, ball, prevBall, prevPlayer, prevPlayer2;
 //my 7 segments
 
 
