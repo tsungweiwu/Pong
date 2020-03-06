@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81c06dec-0a2f-44fb-9e91-9b6e8605294f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gba.h" beforeDir="false" afterPath="$PROJECT_DIR$/gba.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.elf" beforeDir="false" afterPath="$PROJECT_DIR$/main.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.gba" beforeDir="false" afterPath="$PROJECT_DIR$/main.gba" afterDir="false" />
@@ -41,6 +38,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="cf.advertisement.text.overridden" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -56,7 +54,11 @@
       <workItem from="1583343488537" duration="3813000" />
       <workItem from="1583432367582" duration="1981000" />
       <workItem from="1583436485003" duration="1255000" />
-      <workItem from="1583450008047" duration="1240000" />
+      <workItem from="1583450008047" duration="2548000" />
+      <workItem from="1583460293083" duration="833000" />
+      <workItem from="1583461146913" duration="75000" />
+      <workItem from="1583461231967" duration="5780000" />
+      <workItem from="1583509146894" duration="76000" />
     </task>
     <servers />
   </component>
@@ -68,17 +70,29 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="440" y="202" key="#Other_File_Types/0.23.1680.1027@0.23.1680.1027" timestamp="1583434178650" />
+    <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583460747054">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583460747054" />
     <state x="571" y="346" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583434118177">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="571" y="346" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1583434118177" />
-    <state x="349" y="175" key="SettingsEditor" timestamp="1583434303074">
+    <state x="462" y="321" width="755" height="615" key="EditFileWatcherDialog" timestamp="1583461473261">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="349" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1583434303074" />
-    <state x="519" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1583450012727">
+    <state x="462" y="321" width="755" height="615" key="EditFileWatcherDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583461473261" />
+    <state x="349" y="175" key="SettingsEditor" timestamp="1583463258769">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="519" y="369" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583450012727" />
+    <state x="349" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1583463258769" />
+    <state x="519" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1583509147857">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="519" y="369" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583509147857" />
+    <state x="440" y="202" key="scopes" timestamp="1583461962752">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="440" y="202" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1583461962752" />
   </component>
 </project>
