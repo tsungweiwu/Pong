@@ -188,13 +188,14 @@ int main() {
 
   while (1) {
     if (val == 5 | val2 == 5) {
-      draw7Segments(val, val2);
       drawString("Game Over", SCREEN_WIDTH/2.4, SCREEN_HEIGHT/2.5, makeColor(255,255,255));
-      val = val2 = 0;
-      top = top2 = SCREEN_HEIGHT/2.5;
+      if ((!(REG_KEY_INPUT & DOWN)) | (!(REG_KEY_INPUT & UP) && top2 != 0) || ((!(REG_KEY_INPUT & B) && top != 0) | (!(REG_KEY_INPUT & A)))) {
+        draw7Segments(val, val2);
+        val = val2 = 0;
+        top = top2 = SCREEN_HEIGHT/2.5;
+      }
       continue;
     }
-
     sync();
 
     if (val == 0 && val2 == 0 && (speedX == 0 && speedY == 0) && start == 0) {
