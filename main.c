@@ -175,6 +175,9 @@ int main() {
   // setting up ball and players
   initGame();
 
+  //Setup Text
+  setupSymbols(1);
+
   ball.x = ballLeft;
   ball.y = ballTop;
 
@@ -314,8 +317,11 @@ int main() {
 
     // draw area
     draw7Segments(val, val2);
+
     drawRect(player, p_color);
     drawRect(player2, p_color);
     drawRect(ball, b_color);
+    //Don't go over certain amount of text LOL it dies runs of memory xd after the letter T;
+    drawString("Pong?", 1,1, makeColor(255,255,255));
   }
 }

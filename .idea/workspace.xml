@@ -11,6 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="81c06dec-0a2f-44fb-9e91-9b6e8605294f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gba.h" beforeDir="false" afterPath="$PROJECT_DIR$/gba.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.elf" beforeDir="false" afterPath="$PROJECT_DIR$/main.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.gba" beforeDir="false" afterPath="$PROJECT_DIR$/main.gba" afterDir="false" />
@@ -20,6 +21,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,6 +44,18 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -59,25 +75,48 @@
       <workItem from="1583461146913" duration="75000" />
       <workItem from="1583461231967" duration="5780000" />
       <workItem from="1583509146894" duration="76000" />
+      <workItem from="1584161385969" duration="18410000" />
     </task>
+    <task id="LOCAL-00001" summary="Fix Two Vertical Segments">
+      <created>1584172248411</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584172248411</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix Two Vertical Segments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Two Vertical Segments" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="202" key="#Other_File_Types" timestamp="1583434178650">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="440" y="202" key="#Other_File_Types/0.23.1680.1027@0.23.1680.1027" timestamp="1583434178650" />
-    <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583460747054">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="347" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584161436136">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="347" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584161436136" />
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583460747054" />
-    <state x="571" y="346" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583434118177">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="653" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584162214164">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="653" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584162214164" />
     <state x="571" y="346" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1583434118177" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584177334738">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584177334738" />
+    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1584172248082">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584172248082" />
     <state x="462" y="321" width="755" height="615" key="EditFileWatcherDialog" timestamp="1583461473261">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -90,9 +129,17 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="519" y="369" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1583509147857" />
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584172253206">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584172253206" />
     <state x="440" y="202" key="scopes" timestamp="1583461962752">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="440" y="202" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1583461962752" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584172143454">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584172143454" />
   </component>
 </project>
