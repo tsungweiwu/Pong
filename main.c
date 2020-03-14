@@ -11,7 +11,7 @@ void sync() {
 }
 
 // changes color
-uint16 makeColor(uint8 r, uint8 g, uint8 b) {
+uint16 makeColor(uint8 r, uint8 g, uint8 b) { //RBG to HEX Function
   return (r & 0x1f) | ((g & 0x1f) << 5) | ((b & 0x1f) << 10);
 }
 
@@ -30,8 +30,14 @@ void drawRect(struct Rect rect, uint16 color) {
   }
 }
 
+void drawSegment(bool statement, struct Rect rect){
+    if(statement){
+        drawRect(rect, makeColor(255, 255, 255));// uff rgb to hex
+    }
+}
+
 // number sequence for count down
-void init7seg() {
+void init7Segments() {
   // a, b, c, d, e, f, g
   a.w = i.w = 16;
   a.h = i.h = 4;
@@ -47,10 +53,10 @@ void init7seg() {
 
   // location of the 7 segment display
   a.x = d.x = e.x = f.x = g.x = SCREEN_WIDTH / 5.5;
-  b.x = c.x = a.x + a.w;
+  b.x = c.x = a.x + a.w - a.h;
 
   i.x = l.x = m.x = n.x = o.x = SCREEN_WIDTH / 4 * 3;
-  j.x = k.x = i.x + i.w;
+  j.x = k.x = i.x + i.w - i.h;
 
   // height of the display
   a.y = b.y = f.y = i.y = j.y = n.y = 0;
@@ -63,7 +69,7 @@ void init7seg() {
 }
 
 // erases or just sets all to white
-void clear7seg() {
+void clear7Segments() {
   drawRect(a, makeColor(0, 0, 0));
   drawRect(b, makeColor(0, 0, 0));
   drawRect(c, makeColor(0, 0, 0));
@@ -82,8 +88,8 @@ void clear7seg() {
 }
 
 // draws the number count down
-void draw7seg(uint8 num, uint8 num2) {
-  clear7seg();
+void draw7Segments(uint8 num, uint8 num2) {
+  clear7Segments();
   // first digit
   bool w, x, y, z;
   // second digit
@@ -100,36 +106,21 @@ void draw7seg(uint8 num, uint8 num2) {
   z2 = (num2 >= 1 ? ((num2 -= 1) ? 1 : 1) : 0);
 
   // this is where the crazy if statements go
-  if (w || y || (!x && !z) || (x && z))
-    drawRect(a, makeColor(0x1f, 0x1f, 0x1f));
-  if ((y && z) || (!y && !z) || !x)
-    drawRect(b, makeColor(0x1f, 0x1f, 0x1f));
-  if (x || !y || z)
-    drawRect(c, makeColor(0x1f, 0x1f, 0x1f));
-  if (w || (y && !z) || (!x && !z) || (!x && y) || (x && !y && z))
-    drawRect(d, makeColor(0x1f, 0x1f, 0x1f));
-  if ((y && !z) || (!x && !z))
-    drawRect(e, makeColor(0x1f, 0x1f, 0x1f));
-  if (w || (x && !y) || (x && !z) || (!y && !z))
-    drawRect(f, makeColor(0x1f, 0x1f, 0x1f));
-  if (w || (!y && x) || (y && !z) || (y && !x))
-    drawRect(g, makeColor(0x1f, 0x1f, 0x1f));
-
+  drawSegment(w || y || (!x && !z) || (x && z), a);
+  drawSegment((y && z) || (!y && !z) || !x, b);
+  drawSegment(x || !y || z, c);
+  drawSegment(w || (y && !z) || (!x && !z) || (!x && y) || (x && !y && z), d);
+  drawSegment((y && !z) || (!x && !z), e);
+  drawSegment(w || (x && !y) || (x && !z) || (!y && !z), f);
+  drawSegment(w || (!y && x) || (y && !z) || (y && !x), g);
   // this is where the crazy if statements go
-  if (w2 || y2 || (!x2 && !z2) || (x2 && z2))
-    drawRect(i, makeColor(0x1f, 0x1f, 0x1f));
-  if ((y2 && z2) || (!y2 && !z2) || !x2)
-    drawRect(j, makeColor(0x1f, 0x1f, 0x1f));
-  if (x2 || !y2 || z2)
-    drawRect(k, makeColor(0x1f, 0x1f, 0x1f));
-  if (w2 || (y2 && !z2) || (!x2 && !z2) || (!x2 && y2) || (x2 && !y2 && z2))
-    drawRect(l, makeColor(0x1f, 0x1f, 0x1f));
-  if ((y2 && !z2) || (!x2 && !z2))
-    drawRect(m, makeColor(0x1f, 0x1f, 0x1f));
-  if (w2 || (x2 && !y2) || (x2 && !z2) || (!y2 && !z2))
-    drawRect(n, makeColor(0x1f, 0x1f, 0x1f));
-  if (w2 || (!y2 && x2) || (y2 && !z2) || (y2 && !x2))
-    drawRect(o, makeColor(0x1f, 0x1f, 0x1f));
+  drawSegment(w2 || y2 || (!x2 && !z2) || (x2 && z2), i); //first horizontal this
+  drawSegment((y2 && z2) || (!y2 && !z2) || !x2, j); // second vertical
+  drawSegment(x2 || !y2 || z2, k); //forth vertical
+  drawSegment(w2 || (y2 && !z2) || (!x2 && !z2) || (!x2 && y2) || (x2 && !y2 && z2), l); //third horizontal this
+  drawSegment((y2 && !z2) || (!x2 && !z2), m); //third vertical
+  drawSegment(w2 || (x2 && !y2) || (x2 && !z2) || (!y2 && !z2), n); //first vertical
+  drawSegment(w2 || (!y2 && x2) || (y2 && !z2) || (y2 && !x2), o); // second horizontal
 }
 
 void initGame() {
@@ -154,7 +145,7 @@ void initGame() {
 int main() {
   REG_DISPLAY = VIDEOMODE | BGMODE;
   // initialize the display
-  init7seg();
+  init7Segments();
 
   // initialize the points
   uint8 val = 0;
@@ -177,9 +168,9 @@ int main() {
   uint32 left2 = 0;
 
   // color of the players
-  uint16 p_color = makeColor(0, 0x1f, 0);
+  uint16 p_color = makeColor(0, 255, 0);
   // color of the ball
-  uint16 b_color = makeColor(0, 0, 0x1f);
+  uint16 b_color = makeColor(0, 0, 255);
 
   // setting up ball and players
   initGame();
@@ -322,7 +313,7 @@ int main() {
     prevPlayer2 = player2;
 
     // draw area
-    draw7seg(val, val2);
+    draw7Segments(val, val2);
     drawRect(player, p_color);
     drawRect(player2, p_color);
     drawRect(ball, b_color);
