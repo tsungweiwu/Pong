@@ -144,12 +144,15 @@ void initGame() {
 
 int main() {
   REG_DISPLAY = VIDEOMODE | BGMODE;
-  // initialize the display
-  init7Segments();
 
   // initialize the points
   uint8 val = 0;
   uint8 val2 = 0;
+
+  screen.h = SCREEN_HEIGHT;
+  screen.w = SCREEN_WIDTH;
+  screen.x = 0;
+  screen.y = 0;
 
   // setting up temp variables for Ball
   uint32 ballLeft = SCREEN_WIDTH / 2;
@@ -172,9 +175,6 @@ int main() {
   // color of the ball
   uint16 b_color = makeColor(0, 0, 255);
 
-  // setting up ball and players
-  initGame();
-
   //Setup Text
   setupSymbols(1);
 
@@ -190,6 +190,8 @@ int main() {
 
     // starting the ball with whoever moves first
     if (val == 0 && val2 == 0 && (speedX == 0 && speedY == 0)) {
+      //Don't go over certain amount of text LOL it dies runs of memory xd after the letter T;
+      drawString("Press to begin", SCREEN_WIDTH/3.5, SCREEN_HEIGHT/2, makeColor(255,255,255));
       // start
       if ((!(REG_KEY_INPUT & DOWN)) | (!(REG_KEY_INPUT & UP) && top2 != 0)) {
         speedX = 1;
@@ -202,6 +204,12 @@ int main() {
         speedY = 1;
         score = 1;
       }
+
+      drawRect(screen, makeColor(0 , 0, 0));
+      // setting up ball and players
+      initGame();
+      // initialize the display
+      init7Segments();
     }
 
     // erase prev ball position
@@ -321,7 +329,5 @@ int main() {
     drawRect(player, p_color);
     drawRect(player2, p_color);
     drawRect(ball, b_color);
-    //Don't go over certain amount of text LOL it dies runs of memory xd after the letter T;
-    drawString("Pong?", 1,1, makeColor(255,255,255));
   }
 }
