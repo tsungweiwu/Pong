@@ -187,7 +187,7 @@ int main() {
   ball.y = ballTop;
 
   while (1) {
-    if (val == 1 | val2 == 1) {
+    if (val == 5 | val2 == 5) {
       draw7Segments(val, val2);
       drawString("Game Over", SCREEN_WIDTH/2.4, SCREEN_HEIGHT/2.5, makeColor(255,255,255));
       val = val2 = 0;

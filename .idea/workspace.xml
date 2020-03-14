@@ -10,11 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81c06dec-0a2f-44fb-9e91-9b6e8605294f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.elf" beforeDir="false" afterPath="$PROJECT_DIR$/main.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.gba" beforeDir="false" afterPath="$PROJECT_DIR$/main.gba" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +68,7 @@
       <workItem from="1583461231967" duration="5780000" />
       <workItem from="1583509146894" duration="76000" />
       <workItem from="1584161385969" duration="18410000" />
-      <workItem from="1584189515273" duration="4703000" />
+      <workItem from="1584189515273" duration="4782000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Two Vertical Segments">
       <created>1584172248411</created>
