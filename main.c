@@ -142,17 +142,21 @@ void initGame() {
   prevBall = ball;
 }
 
+void startScreen() {
+  drawString("Press to begin", SCREEN_WIDTH/2.75, SCREEN_HEIGHT/2.5, makeColor(0,0,0));
+  drawString("Game Over", SCREEN_WIDTH/2.4, SCREEN_HEIGHT/2.5, makeColor(0,0,0));
+  // setting up ball and players
+  initGame();
+  // initialize the display
+  init7Segments();
+}
+
 int main() {
   REG_DISPLAY = VIDEOMODE | BGMODE;
 
   // initialize the points
   uint8 val = 0;
   uint8 val2 = 0;
-
-  screen.h = SCREEN_HEIGHT;
-  screen.w = SCREEN_WIDTH;
-  screen.x = 0;
-  screen.y = 0;
 
   // setting up temp variables for Ball
   uint32 ballLeft = SCREEN_WIDTH / 2;
@@ -161,13 +165,14 @@ int main() {
   uint32 speedY = 0;
 
   uint8 score = -1;
+  uint8 start = 0;
 
   // setting up values for player
-  uint32 top = SCREEN_HEIGHT/3;
+  uint32 top = SCREEN_HEIGHT/2.5;
   uint32 left = 0;
 
   // setting up values for player2
-  uint32 top2 = SCREEN_HEIGHT/3;
+  uint32 top2 = SCREEN_HEIGHT/2.5;
   uint32 left2 = 0;
 
   // color of the players
@@ -182,34 +187,37 @@ int main() {
   ball.y = ballTop;
 
   while (1) {
-    if (val == 5 | val2 == 5) {
-      break;
+    if (val == 1 | val2 == 1) {
+      draw7Segments(val, val2);
+      drawString("Game Over", SCREEN_WIDTH/2.4, SCREEN_HEIGHT/2.5, makeColor(255,255,255));
+      val = val2 = 0;
+      top = top2 = SCREEN_HEIGHT/2.5;
+      continue;
     }
 
     sync();
 
+    if (val == 0 && val2 == 0 && (speedX == 0 && speedY == 0) && start == 0) {
+      drawString("Press to begin", SCREEN_WIDTH/2.75, SCREEN_HEIGHT/2.5, makeColor(255,255,255));
+      start = 1;
+    }
+
     // starting the ball with whoever moves first
     if (val == 0 && val2 == 0 && (speedX == 0 && speedY == 0)) {
-      //Don't go over certain amount of text LOL it dies runs of memory xd after the letter T;
-      drawString("Press to begin", SCREEN_WIDTH/3.5, SCREEN_HEIGHT/2, makeColor(255,255,255));
       // start
       if ((!(REG_KEY_INPUT & DOWN)) | (!(REG_KEY_INPUT & UP) && top2 != 0)) {
         speedX = 1;
         speedY = 1;
         score = 0;
+        startScreen();
       }
 
       if ((!(REG_KEY_INPUT & B) && top != 0) | (!(REG_KEY_INPUT & A))) {
         speedX = -1;
         speedY = 1;
         score = 1;
+        startScreen();
       }
-
-      drawRect(screen, makeColor(0 , 0, 0));
-      // setting up ball and players
-      initGame();
-      // initialize the display
-      init7Segments();
     }
 
     // erase prev ball position
