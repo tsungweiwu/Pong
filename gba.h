@@ -40,7 +40,7 @@ struct Rect {
 //my 7 segments
 
 
-
+int pixelSize;
 
 //Text
 struct Square{
@@ -53,7 +53,7 @@ struct Symbol{
     struct Square pixel[20];
 }_A,_B,_C,_D,_E,_F,_G,_H,_I,_J,_K,_L,_M,_N,_O,_P,_Q,_R,_S,_T,_U,_V,_W,_X,_Y,_Z,_EXCLAMATION,_INTERROGATIVE;
 
-struct Symbol initSymbol(uint32 size){
+struct Symbol initSymbol(){
     struct Symbol symbol;
     int count = 0;
     int y = 0;
@@ -62,111 +62,112 @@ struct Symbol initSymbol(uint32 size){
         for (int j = 0; j < 4; ++j) {
             symbol.pixel[count].rect.x = x;
             symbol.pixel[count].rect.y = y;
-            symbol.pixel[count].rect.w = size;
-            symbol.pixel[count].rect.h = size;
+            symbol.pixel[count].rect.w = pixelSize;
+            symbol.pixel[count].rect.h = pixelSize;
             symbol.pixel[count].enable = 0;
-            x += size;
+            x += pixelSize;
             count++;
         }
-        y += size;
+        y += pixelSize;
     }
     return symbol;
 }
 
-struct Symbol enablePixels(int pixels[20], uint32 size){
+struct Symbol enablePixels(int pixels[20]){
     struct Symbol symbol;
-    symbol = initSymbol(size);
-    for (int i = 0; i < 20; ++i) {
+    symbol = initSymbol();
+    for (int i = 0; i < 14; i++) {
         symbol.pixel[pixels[i]-1].enable = 1;
     }
     return symbol;
 }
 
 void setupSymbols(uint32 size){
+    pixelSize = size;
     //Letter A
     int enabledPixelsA[] ={2,3,5,8,9,10,11,12,13,16,17,20};
-    _A = enablePixels(enabledPixelsA, size);
+    _A = enablePixels(enabledPixelsA);
     //Letter B
     int enabledPixelsB[] ={1,2,3,5,8,9,10,11,13,16,17,18,19};
-    _B = enablePixels(enabledPixelsB, size);
+    _B = enablePixels(enabledPixelsB);
     //Letter C
     int enabledPixelsC[] ={2,3,4,5,9,13,18,19,20};
-    _C = enablePixels(enabledPixelsC, size);
+    _C = enablePixels(enabledPixelsC);
     //Letter D
     int enabledPixelsD[] ={1,2,3,5,8,9,12,13,16,17,18,19};
-    _D = enablePixels(enabledPixelsD, size);
+    _D = enablePixels(enabledPixelsD);
     //Letter E
     int enabledPixelsE[] ={1,2,3,4,5,9,10,11,13,17,18,19,20};
-    _E = enablePixels(enabledPixelsE, size);
+    _E = enablePixels(enabledPixelsE);
     //Letter F
     int enabledPixelsF[] ={1,2,3,4,5,9,10,11,13,17};
-    _F = enablePixels(enabledPixelsF, size);
+    _F = enablePixels(enabledPixelsF);
     //Letter G
     int enabledPixelsG[] ={2,3,4,5,9,11,12,13,16,18,19,20};
-    _G = enablePixels(enabledPixelsG, size);
+    _G = enablePixels(enabledPixelsG);
     //Letter H
     int enabledPixelsH[] ={1,4,5,8,9,10,11,12,13,16,17,20};
-    _H = enablePixels(enabledPixelsH, size);
+    _H = enablePixels(enabledPixelsH);
     //Letter I
     int enabledPixelsI[] ={2,6,10,14,18};
-    _I = enablePixels(enabledPixelsI, size);
+    _I = enablePixels(enabledPixelsI);
     //Letter J
     int enabledPixelsJ[] ={4,8,12,13,16,18,19};
-    _J = enablePixels(enabledPixelsJ, size);
+    _J = enablePixels(enabledPixelsJ);
     //Letter K
     int enabledPixelsK[] ={1,4,5,7,9,10,13,15,17,20};
-    _K = enablePixels(enabledPixelsK, size);
+    _K = enablePixels(enabledPixelsK);
     //Letter L
     int enabledPixelsL[] ={1,5,9,13,17,18,19};
-    _L = enablePixels(enabledPixelsL, size);
+    _L = enablePixels(enabledPixelsL);
     //Letter M
     int enabledPixelsM[] ={1,4,5,6,7,8,9,10,11,12,13,16,17,20};//Looks Ugly lol
-    _M = enablePixels(enabledPixelsM, size);
+    _M = enablePixels(enabledPixelsM);
     //Letter N
     int enabledPixelsN[] ={1,4,5,6,8,9,11,12,13,16,17,20};
-    _N = enablePixels(enabledPixelsN, size);
+    _N = enablePixels(enabledPixelsN);
     //Letter O
     int enabledPixelsO[] ={2,3,5,8,9,12,13,16,18,19};
-    _O = enablePixels(enabledPixelsO, size);
+    _O = enablePixels(enabledPixelsO);
     //Letter P
     int enabledPixelsP[] ={1,2,3,5,8,9,10,11,13,17};
-    _P = enablePixels(enabledPixelsP, size);
+    _P = enablePixels(enabledPixelsP);
     //Letter Q
     int enabledPixelsQ[] ={2,3,5,8,9,12,13,15,16,18,19,20};
-    _Q = enablePixels(enabledPixelsQ, size);
+    _Q = enablePixels(enabledPixelsQ);
     //Letter R
     int enabledPixelsR[] ={1,2,3,5,8,9,10,11,13,15,17,20};
-    _R = enablePixels(enabledPixelsR, size);
+    _R = enablePixels(enabledPixelsR);
     //Letter S
     int enabledPixelsS[] ={2,3,4,5,10,11,16,17,18,19};
-    _S = enablePixels(enabledPixelsS, size);
+    _S = enablePixels(enabledPixelsS);
     //Letter T
-    int enabledPixelsT[] ={1,2,3,6,10,14,18};
-    _T = enablePixels(enabledPixelsT, size);//out of memory? xd maybe After T renders weird
+    int enabledPixelsT[] ={1,2,3,6,10,14,18,1,2,3,6,10,14,18,1,2,3,6,10,14,18};
+    _T = enablePixels(enabledPixelsT);//out of memory? xd maybe After T renders weird
     //Letter U
     int enabledPixelsU[] ={1,4,5,8,9,12,13,16,17,18,19,20};
-    _U = enablePixels(enabledPixelsU, size);
+    _U = enablePixels(enabledPixelsU);
     //Letter V
     int enabledPixelsV[] ={1,3,5,7,9,11,13,15,18};//Surprisingly this works and W as well xd I can't math?
-    _V = enablePixels(enabledPixelsV, size);
+    _V = enablePixels(enabledPixelsV);
     //Letter W
     int enabledPixelsW[] ={1,4,5,8,9,10,11,12,13,14,15,16,17,20};// also potato v:
-    _W = enablePixels(enabledPixelsW, size);
+    _W = enablePixels(enabledPixelsW);
     //Letter X
     int enabledPixelsX[] ={1,3,5,7,10,13,15,17,19};
-    _X = enablePixels(enabledPixelsX, size);
+    _X = enablePixels(enabledPixelsX);
     //Letter Y
     int enabledPixelsY[] ={1,3,5,7,9,10,11,14,18};
-    _Y = enablePixels(enabledPixelsY, size);
+    _Y = enablePixels(enabledPixelsY);
     //Letter Z
     int enabledPixelsZ[] ={1,2,3,4,8,11,14,17,18,19,20};
-    _Z = enablePixels(enabledPixelsZ, size);
+    _Z = enablePixels(enabledPixelsZ);
     // !
     int enabledPixelsExclamation[] ={2,6,10,18};
-    _EXCLAMATION = enablePixels(enabledPixelsExclamation, size);
+    _EXCLAMATION = enablePixels(enabledPixelsExclamation);
     // ?
     int enabledPixelsInterrogative[] ={2,3,8,10,11,18};
-    _INTERROGATIVE = enablePixels(enabledPixelsInterrogative, size);
+    _INTERROGATIVE = enablePixels(enabledPixelsInterrogative);
 
 }
 
@@ -187,7 +188,7 @@ bool chrcmp(char currentValue, char compareTo){
 }
 
 void drawString(char *text, int x, int y, uint16 color){
-    int size = 5;//This is hardcoded
+    int size = pixelSize*5;//This is hardcoded
     for(int i = 0; i < strlen(text); i++){
         if(chrcmp(text[i], 'A')){
             drawSymbol(_A, x + (size*i), y, color);
